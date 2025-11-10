@@ -1,1 +1,861 @@
-index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paloma J Pérez | Asesoría Inmobiliaria en la Costa del Sol</title>
+  <meta name="description" content="Asesoría inmobiliaria confidencial y estratégica en Marbella y Costa del Sol. Venta, compra, inversión, alquiler, obra nueva, financiación y valoración profesional.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #18202a;
+      --accent: #0b6e7d;
+      --accent-soft: #f2f6f8;
+      --muted: #6b7683;
+      --border: #e5e8ec;
+      --hero-overlay: rgba(0,0,0,0.35);
+      --radius: 14px;
+      --shadow-soft: 0 14px 40px rgba(15,35,52,0.12);
+      --max-width: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* Layout */
+
+    header, main, footer {
+      width: 100%;
+    }
+
+    .wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top nav */
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid rgba(229,232,236,0.8);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: .11em;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      color: #fff;
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.38), rgba(0,0,0,0.25)),
+        url("https://images.pexels.com/photos/210617/pexels-photo-210617.jpeg?auto=compress&cs=tinysrgb&w=1600");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05);
+      z-index: -1;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 80px 20px 70px;
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .9;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.18;
+      margin-bottom: 14px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      max-width: 620px;
+      opacity: .96;
+      margin-bottom: 26px;
+    }
+
+    .hero-small {
+      font-size: 13px;
+      opacity: .88;
+      margin-bottom: 26px;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: all .2s ease;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #0b6e7d;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      background: #f5fafb;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.8);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-1px);
+    }
+
+    .hero-locations {
+      font-size: 11px;
+      opacity: .82;
+      margin-top: 8px;
+    }
+
+    /* Sections */
+
+    section {
+      padding: 70px 0;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 32px;
+      font-size: 15px;
+    }
+
+    /* About */
+
+    .about-text {
+      max-width: 800px;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .about-text p + p {
+      margin-top: 10px;
+    }
+
+    /* Cards grid */
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 22px rgba(21,44,63,0.06);
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .card img {
+      border-radius: 12px;
+      margin-bottom: 10px;
+      height: 170px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    /* Dark CTA */
+
+    .dark-section {
+      background: #262a30;
+      color: #ffffff;
+    }
+
+    .dark-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 60px 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(260px,1.3fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .dark-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .dark-section p {
+      font-size: 14px;
+      opacity: .9;
+      margin-bottom: 10px;
+    }
+
+    .dark-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: #9dd8df;
+      margin-bottom: 6px;
+    }
+
+    .dark-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .btn-dark-outline {
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 13px;
+      border: 1px solid rgba(255,255,255,0.7);
+      color: #fff;
+      background: transparent;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .btn-dark-outline:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-1px);
+    }
+
+    .dark-box {
+      background: #1b1f24;
+      border-radius: 16px;
+      padding: 18px 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.38);
+    }
+
+    .dark-box strong {
+      color: #9dd8df;
+      font-weight: 600;
+    }
+
+    /* Collaborations */
+
+    .logo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      align-items: center;
+      margin-top: 22px;
+    }
+
+    .logo-pill {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      background: #ffffff;
+      box-shadow: 0 8px 22px rgba(15,35,52,0.05);
+    }
+
+    .logo-pill span {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Blog */
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .blog-card {
+      padding: 16px 16px 14px;
+      border-radius: var(--radius);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 18px rgba(21,44,63,0.04);
+      font-size: 13px;
+    }
+
+    .blog-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .blog-card p {
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .blog-card a {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Contact */
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: minmax(0,1.6fr) minmax(260px,1.1fr);
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .contact-form {
+      padding: 18px 18px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .field {
+      margin-bottom: 10px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 9px 10px;
+      border-radius: 8px;
+      border: 1px solid #d6dde4;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      transition: all .18s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(11,110,125,0.08);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .contact-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .side-contact {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .side-contact strong {
+      color: var(--accent);
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 26px 20px 22px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero {
+        min-height: 86vh;
+      }
+      .hero-inner {
+        padding-top: 70px;
+        padding-bottom: 40px;
+      }
+      section {
+        padding: 50px 0;
+      }
+      .grid-3,
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .dark-inner,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+      .logo-row {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="nav">
+    <div class="logo">PALOMA J PEREZ</div>
+    <nav class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#valoracion">Valoración</a>
+      <a href="#colaboraciones">Colaboraciones</a>
+      <a href="#blog">Blog</a>
+      <a href="#contacto" class="nav-cta">Agenda tu asesoría</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-kicker">Asesoría Inmobiliaria en Marbella & Costa del Sol</div>
+      <h1>Encuentra tu casa ideal o vende con confianza y resultados</h1>
+      <p class="hero-sub">
+        Soy Paloma J Pérez, asesora inmobiliaria con experiencia internacional y mirada estratégica.
+      </p>
+      <p class="hero-small">
+        Te acompaño paso a paso para comprar, vender o invertir en la Costa del Sol con claridad, 
+        discreción y decisiones inteligentes basadas en datos, no en improvisaciones.
+      </p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="https://wa.me/XXXXXXXXXXX?text=Hola%20Paloma%2C%20me%20gustaría%20hablar%20contigo%20sobre%20asesoría%20inmobiliaria" target="_blank" rel="noopener">
+          <!-- TODO: sustituir XXXXX por tu número -->
+          Habla conmigo por WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/XXXXXXXX" target="_blank" rel="noopener">
+          <!-- TODO: sustituir XXXXX por tu usuario -->
+          Sígueme en Instagram
+        </a>
+      </div>
+      <div class="hero-locations">
+        Marbella · Estepona · Benahavís · Mijas Costa · Benalmádena · Costa del Sol
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi">
+    <div class="wrap">
+      <div class="section-title">Más que una asesora, una aliada en cada paso</div>
+      <div class="about-text">
+        <p>
+          Soy Paloma J Pérez, asesora inmobiliaria y amante de los espacios con luz y personalidad.
+          Trabajo en Marbella y la Costa del Sol, ayudando a personas y familias a vender o encontrar su casa ideal
+          con calma, claridad y confianza.
+        </p>
+        <p>
+          No creo en la venta rápida sin sentido, sino en un acompañamiento real: entender lo que necesitas,
+          cuidar cada detalle y defender tus intereses como si fueran los míos.
+          Cada operación es única, y la trato con la misma dedicación con la que viviría mi propia mudanza.
+        </p>
+        <p>
+          Porque detrás de cada compra, venta o inversión hay una historia, una emoción y una decisión
+          que merece ser guiada con corazón y estrategia.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECCIÓN DE PROPIEDADES / PROYECTOS -->
+  <section>
+    <div class="wrap">
+      <div class="section-kicker">Proyectos excepcionales</div>
+      <h2 class="section-title">Selección de Propiedades y Proyectos en la Costa del Sol</h2>
+      <p class="section-lead">
+        Descubre una cuidada selección de propiedades únicas, donde la arquitectura mediterránea,
+        la luz y el mar se encuentran con tu nuevo estilo de vida. Cada espacio está elegido por su
+        ubicación, personalidad y potencial — para vivir, invertir o soñar.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <img src="https://images.pexels.com/photos/259863/pexels-photo-259863.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Viviendas con vistas al mar en la Costa del Sol">
+          <h3>Viviendas con encanto</h3>
+          <p>Apartamentos y áticos en zonas consolidadas, ideales para residir todo el año o como segunda vivienda.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.pexels.com/photos/210617/pexels-photo-210617.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Promociones de obra nueva en Marbella">
+          <h3>Obra nueva seleccionada</h3>
+          <p>Acceso a promociones de obra nueva con garantías, ubicadas en los puntos más demandados de la Costa del Sol.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Propiedades junto a la playa en Málaga">
+          <h3>Inversión estratégica</h3>
+          <p>Propiedades con alta demanda en alquiler turístico o residencial, pensadas para generar rentabilidad real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS PRINCIPALES -->
+  <section id="servicios" style="background: var(--accent-soft);">
+    <div class="wrap">
+      <div class="section-kicker">Servicios</div>
+      <h2 class="section-title">Asesoría inmobiliaria confidencial y a tu medida</h2>
+      <p class="section-lead">
+        Te acompaño en todo el proceso, desde el análisis inicial hasta la firma, para que tomes decisiones
+        informadas, seguras y alineadas con tus objetivos personales o de inversión.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Venta de Propiedades</h3>
+          <p>
+            Acompaño a cada propietario en un proceso de venta claro, profesional y humano.
+            Estudio el valor real de tu vivienda, diseño una estrategia visual potente y gestiono visitas,
+            filtrado de interesados y negociación con discreción.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Asesoría para Inversión Inmobiliaria</h3>
+          <p>
+            Guía integral para inversores nacionales e internacionales que buscan rentabilidad segura.
+            Analizo ubicaciones, cifras y oportunidades reales para construir una inversión sólida y ética.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Gestión de Alquiler Turístico o Residencial</h3>
+          <p>
+            Convierte tu propiedad en un activo estable. Te asesoro en la estrategia,
+            tipo de alquiler, rendimiento esperado y partners de confianza para gestión y mantenimiento.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:26px;">
+        <div class="card">
+          <h3>Promociones de Obra Nueva</h3>
+          <p>
+            Colaboro con promotoras seleccionadas para acercarte proyectos de obra nueva con garantías,
+            desde Marbella a Benalmádena, siempre con análisis independiente a tu favor.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Búsqueda Personalizada de Vivienda</h3>
+          <p>
+            Me encargo de filtrar el mercado por ti. Tú defines el estilo de vida, yo te presento solo las opciones
+            que encajan de verdad — ahorrando tiempo, desgastes y visitas inútiles.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Evaluación y Asesoría de Propiedades Comerciales</h3>
+          <p>
+            Selección de locales, oficinas y espacios con potencial, combinando visión estratégica, demanda real
+            y acompañamiento en la negociación.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORACIÓN & FINANCIACIÓN -->
+  <section id="valoracion" class="dark-section">
+    <div class="dark-inner">
+      <div>
+        <div class="dark-label">Claridad antes de decidir</div>
+        <h2>¿Quieres saber si puedes comprar o cuánto vale tu propiedad?</h2>
+        <p>
+          Muchos piensan que no pueden dar el paso… hasta que hacen el cálculo.
+          Y muchos propietarios descubren que su vivienda vale más de lo que imaginaban.
+        </p>
+        <p>
+          Trabajo con herramientas profesionales de valoración y con brokers hipotecarios especializados
+          para ayudarte a entender tus números desde el minuto uno.
+        </p>
+        <div class="dark-buttons">
+          <a class="btn-dark-outline" href="#contacto">
+            Solicitar valoración gratuita de mi propiedad
+          </a>
+          <a class="btn-dark-outline" href="https://tucalculadora.com" target="_blank" rel="noopener">
+            <!-- TODO: sustituir por enlace real de tu calculadora / Hipofinance -->
+            Calcular mi capacidad de compra
+          </a>
+        </div>
+      </div>
+      <div class="dark-box">
+        <strong>¿Cómo funciona?</strong>
+        <p>
+          1. Me cuentas tu situación (sin compromiso).<br>
+          2. Revisamos zona, estado y demanda para tu propiedad o tu perfil de compra.<br>
+          3. Te doy una estimación realista y un plan: vender mejor, comprar con seguridad o invertir con sentido.
+        </p>
+        <p>
+          Respuesta personal por mí, no por un robot.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLABORACIONES -->
+  <section id="colaboraciones">
+    <div class="wrap">
+      <div class="section-kicker">Confianza & red profesional</div>
+      <h2 class="section-title">Colaboraciones que suman a tu operación</h2>
+      <p class="section-lead">
+        Trabajo en colaboración con equipos y partners especializados que comparten mis valores:
+        transparencia, criterio profesional y acompañamiento cercano. Eso me permite ofrecerte una
+        solución completa sin perder el trato personalizado.
+      </p>
+
+      <div class="logo-row">
+        <div class="logo-pill">
+          <span>eXp Realty</span> · Red internacional inmobiliaria.  
+          <!-- ALT: Asesoría respaldada por una red global y tecnología avanzada. -->
+        </div>
+        <div class="logo-pill">
+          <span>Hipofinance</span> · Brokers hipotecarios especializados en compradores nacionales e internacionales.
+        </div>
+        <div class="logo-pill">
+          <span>SEAG</span> · Soluciones de garantía de alquiler para propietarios exigentes.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" style="background: var(--accent-soft);">
+    <div class="wrap">
+      <div class="section-kicker">Consejos & actualidad</div>
+      <h2 class="section-title">Lo último en el Blog de Paloma J Pérez</h2>
+      <p class="section-lead">
+        Guías prácticas, tendencias y análisis del mercado inmobiliario en la Costa del Sol,
+        para ayudarte a tomar decisiones informadas al vender, comprar o invertir.
+      </p>
+
+      <div class="blog-grid">
+        <div class="blog-card">
+          <h3>Introducción al mercado inmobiliario en la Costa del Sol</h3>
+          <p>Cómo está evolucionando la zona, qué buscan los compradores en 2025 y qué tener en cuenta antes de vender.</p>
+          <a href="https://tublog.com/post1" target="_blank" rel="noopener">
+            Leer artículo
+          </a>
+        </div>
+        <div class="blog-card">
+          <h3>Guía para preparar tu vivienda para la venta</h3>
+          <p>Pequeños ajustes, gran diferencia: home staging, fotografía y estrategia para destacar en un mercado competitivo.</p>
+          <a href="https://tublog.com/post2" target="_blank" rel="noopener">
+            Leer artículo
+          </a>
+        </div>
+        <div class="blog-card">
+          <h3>Invertir en la Costa del Sol con criterio</h3>
+          <p>Rentabilidades reales, zonas clave y errores que evitar si compras para alquilar o revender.</p>
+          <a href="https://tublog.com/post3" target="_blank" rel="noopener">
+            Leer artículo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="section-kicker">Hablemos</div>
+      <h2 class="section-title">Solicita tu asesoría inmobiliaria confidencial</h2>
+      <p class="section-lead">
+        Cuéntame qué necesitas y te responderé personalmente. Sin guiones, sin presión comercial:
+        solo información clara para ayudarte a decidir.
+      </p>
+
+      <div class="contact-wrap">
+        <form class="contact-form" action="mailto:tuemail@tudominio.com" method="post" enctype="text/plain">
+          <!-- TODO: cambia tuemail@tudominio.com por tu correo -->
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="Nombre" type="text" required />
+          </div>
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input id="email" name="Email" type="email" required />
+          </div>
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="Mensaje" placeholder="Cuéntame si quieres vender, comprar o invertir, y en qué zona."></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+          <div class="contact-note">
+            También puedes escribirme directamente por WhatsApp o redes sociales si lo prefieres.
+          </div>
+        </form>
+
+        <div class="side-contact">
+          <p><strong>¿Prefieres un contacto directo?</strong></p>
+          <p>WhatsApp: <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener">+34 XXX XXX XXX</a></p>
+          <p>Instagram: <a href="https://www.instagram.com/XXXXXXXX" target="_blank" rel="noopener">@XXXXXXXX</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/XXXXXXXX" target="_blank" rel="noopener">Paloma J Pérez</a></p>
+          <!-- TODO: sustituir XXXXX en enlaces -->
+          <p style="margin-top:10px;">
+            Atendiendo personalmente a clientes en Marbella, Estepona, Benahavís, Mijas Costa,
+            Benalmádena y alrededores.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© <span id="year"></span> Paloma J Pérez · Asesoría Inmobiliaria en la Costa del Sol</div>
+    <div>Web creada con cariño para transmitir confianza, claridad y resultados.</div>
+  </div>
+</footer>
+
+<script>
+  // año dinámico
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
+
